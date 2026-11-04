@@ -1,0 +1,66 @@
+# ===== Experimental data =====
+# Raw recordings and capture outputs are never committed.
+# Under data/ only README.md and .gitkeep files are tracked.
+# (A deliberately small sample can still be added with `git add -f`.)
+/data/**
+!/data/**/
+!/data/**/README.md
+!/data/**/.gitkeep
+# Same output folder when a tool is run from another working directory
+**/data/raw/
+
+# ===== Analysis outputs =====
+# Under analysis/ only README.md and .gitkeep files are tracked.
+/analysis/**
+!/analysis/**/
+!/analysis/**/README.md
+!/analysis/**/.gitkeep
+# emg_inspect.py writes to ./analysis/emg_inspect relative to its cwd
+**/analysis/emg_inspect/
+
+# ===== Simulation outputs (iverilog / xsim) =====
+/build/
+*.vvp
+*.vcd
+*.fst
+*.lxt
+*.lxt2
+xsim.dir/
+*.wdb
+*.pb
+xvlog.log
+xelab.log
+xsim*.log
+
+# ===== Vivado =====
+/fpga/**/build/
+.Xil/
+*.jou
+vivado*.log
+vivado*.str
+webtalk*
+*.backup.log
+
+# ===== STM32 build outputs (CMake presets use build/${presetName}) =====
+/firmware/stm32/**/build/
+
+# ===== RV32 software build outputs =====
+/firmware/rv32/**/build/
+/tests/**/build/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# ===== OS =====
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ===== Competition delivery (scripts/dev/make_delivery.py): a repository of its own =====
+/delivery/
+
+# ===== Delivery: the model of the SPI build (no samples) =====
+!/analysis/spi/model/**

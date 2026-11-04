@@ -1,0 +1,81 @@
+# E1b: LDA vs feature-MLP vs causal 1D-CNN on GRABMyo G1 (participants 1-10).
+#   python ml/scripts/run_e1b.py --config ml/configs/e1b_g1.toml
+# All model settings are fixed here before any G1 result exists (no tuning on test folds).
+# Budget knobs: run.workers / run.threads / seeds / mlp.max_epochs / cnn.max_epochs / cases.
+
+[data]
+dataset = "grabmyo"
+raw_root = "data/public/grabmyo/raw"
+participants = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+sessions = [1, 2, 3]
+gestures = [4, 11, 12, 15, 16, 17]
+trials = [1, 2, 3, 4, 5, 6, 7]
+fs_out = 2000.0
+
+[run]
+workers = 5
+threads = 4
+seeds = { P1 = [0], P2 = [0, 1, 2] }           # NN seeds; LDA is deterministic (seed 0)
+feature_sets = ["all5", "td4", "rms"]          # LDA inner selection (as E1a)
+vote_k = [1, 3, 5]
+primary_case = "bip4/dc_bp20_450"
+reference_fold = { subject = 1, protocol = "P2", fold = "test_s3", seed = 0 }
+case_pairs = [["bip4/dc_bp20_450", "bip8/dc_bp20_450"],
+              ["bip4/none", "bip4/dc_bp20_450"],
+              ["bip4/dc_bp20_450", "bip4/dc_bp20_450/int16"],
+              ["mono4/dc_bp20_450", "bip4/dc_bp20_450"]]
+
+[mlp]
+features = "all5"
+hidden = [32, 16]
+max_epochs = 200
+patience = 15
+lr = 0.001
+weight_decay = 0.0001
+batch = 256
+
+[cnn]
+layers = [[16, 8, 2], [32, 7, 2], [32, 6, 5]]   # [c_out, kernel, stride]: D = 20, RF = 40, M = 19
+max_epochs = 40
+patience = 8
+lr = 0.002
+weight_decay = 0.0001
+batch = 128
+
+[[cases]]                                       # X1-X3 (primary)
+name = "bip4/dc_bp20_450"
+channels = "bip4"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]
+export = true
+
+[[cases]]                                       # X4: 8 channels
+name = "bip8/dc_bp20_450"
+channels = "bip8"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]
+export = true
+
+[[cases]]                                       # X5: no additional digital filtering
+name = "bip4/none"
+channels = "bip4"
+dsp = "none"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]
+
+[[cases]]                                       # control: monopolar
+name = "mono4/dc_bp20_450"
+channels = "mono4"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp"]
+protocols = ["P1", "P2"]
+
+[[cases]]                                       # X6: unified int16 input (LSB from training records of each fold)
+name = "bip4/dc_bp20_450/int16"
+channels = "bip4"
+dsp = "dc_bp20_450"
+quant = "int16_train"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P2"]

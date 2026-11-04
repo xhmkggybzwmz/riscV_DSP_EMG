@@ -1,0 +1,160 @@
+{
+ "data": [
+  "analysis/spi/rec1.npz",
+  "analysis/spi/rec2.npz"
+ ],
+ "rounds": 12,
+ "windows": 6195,
+ "seed": 0,
+ "best_epoch": 12,
+ "val_bal_acc": 0.9806201550387597,
+ "test_recall_int8": {
+  "REST": 1.0,
+  "LIGHT": 1.0,
+  "STRONG": 1.0
+ },
+ "test_bal_acc_int8": 1.0,
+ "test_confusion_int8": [
+  [
+   172,
+   0,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   172,
+   0,
+   0,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   173,
+   0,
+   0,
+   0
+  ]
+ ],
+ "level": {
+  "rest_rms": 49.93686629248154,
+  "max_rms": 451.4815228872878,
+  "median_rms": {
+   "REST": 42.71503486647828,
+   "LIGHT": 138.20160457084708,
+   "STRONG": 320.72879430929544
+  }
+ },
+ "class_order": [
+  "REST",
+  "LIGHT",
+  "STRONG"
+ ],
+ "describe": {
+  "layers": [
+   {
+    "op": "conv1d",
+    "wq_shape": [
+     16,
+     4,
+     8
+    ],
+    "stride": 2,
+    "kernel": 8,
+    "input": "int16 POST_DSP",
+    "s_in": 6.103515625e-05,
+    "s_out": 0.030119184331161793,
+    "s_w_min": 0.1968674044602559,
+    "s_w_max": 0.9182973829258485,
+    "M_range": [
+     33137,
+     62441
+    ],
+    "s_range": [
+     25,
+     27
+    ],
+    "bias_range": [
+     -9276,
+     6540
+    ]
+   },
+   {
+    "op": "conv1d",
+    "wq_shape": [
+     32,
+     16,
+     7
+    ],
+    "stride": 2,
+    "kernel": 7,
+    "input": "uint8 activation",
+    "s_in": 0.030119184331161793,
+    "s_out": 0.024518494789648324,
+    "s_w_min": 0.0009707818953547084,
+    "s_w_max": 0.004473917816803476,
+    "M_range": [
+     33546,
+     63050
+    ],
+    "s_range": [
+     23,
+     25
+    ],
+    "bias_range": [
+     -10915,
+     22871
+    ]
+   },
+   {
+    "op": "conv1d",
+    "wq_shape": [
+     32,
+     32,
+     6
+    ],
+    "stride": 5,
+    "kernel": 6,
+    "input": "uint8 activation",
+    "s_in": 0.024518494789648324,
+    "s_out": 0.034083023565273964,
+    "s_w_min": 0.0011926753770933605,
+    "s_w_max": 0.0033036005881093965,
+    "M_range": [
+     32961,
+     64316
+    ],
+    "s_range": [
+     24,
+     26
+    ],
+    "bias_range": [
+     -32128,
+     73400
+    ]
+   }
+  ],
+  "fc": {
+   "wq_shape": [
+    6,
+    32
+   ],
+   "s_fc": 6.977076096791898e-06,
+   "bias_range": [
+    -29141,
+    17186
+   ]
+  },
+  "M_gap": 19,
+  "D": 20,
+  "RF": 40,
+  "window": 400,
+  "step": 100,
+  "settle": 0,
+  "first_decision_end": 399
+ }
+}

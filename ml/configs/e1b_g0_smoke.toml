@@ -1,0 +1,45 @@
+# E1b pipeline check on G0 (participants 1-3) before the G1 run.
+# Same model settings as e1b_g1.toml; fewer seeds. Not used for model selection.
+
+[data]
+dataset = "grabmyo"
+raw_root = "data/public/grabmyo/raw"
+participants = [1, 2, 3]
+sessions = [1, 2, 3]
+gestures = [4, 11, 12, 15, 16, 17]
+trials = [1, 2, 3, 4, 5, 6, 7]
+fs_out = 2000.0
+
+[run]
+workers = 3
+threads = 4
+seeds = { P1 = [0], P2 = [0, 1] }
+feature_sets = ["all5", "td4", "rms"]          # LDA inner selection (as E1a)
+vote_k = [1, 3, 5]
+primary_case = "bip4/dc_bp20_450"
+reference_fold = { subject = 1, protocol = "P2", fold = "test_s3", seed = 0 }
+
+[mlp]                                           # fixed a priori, no tuning on test folds
+features = "all5"
+hidden = [32, 16]
+max_epochs = 200
+patience = 15
+lr = 0.001
+weight_decay = 0.0001
+batch = 256
+
+[cnn]                                           # D = 20, RF = 40, M = 19 (check_geometry)
+layers = [[16, 8, 2], [32, 7, 2], [32, 6, 5]]   # [c_out, kernel, stride]
+max_epochs = 40
+patience = 8
+lr = 0.002
+weight_decay = 0.0001
+batch = 128
+
+[[cases]]
+name = "bip4/dc_bp20_450"
+channels = "bip4"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]
+export = true

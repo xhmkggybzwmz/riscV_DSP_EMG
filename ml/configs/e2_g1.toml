@@ -1,0 +1,32 @@
+# E2: fixed-point DSP + INT8 CNN evaluation on GRABMyo G1, P2 (cross-day) folds.
+#   python ml/scripts/run_e2.py --config ml/configs/e2_g1.toml
+# Model / training settings are copied unchanged from e1b_g1.toml (primary case bip4/dc_bp20_450).
+# E1b did not save per-fold weights (only one reference fold), so the P2 CNNs are retrained with
+# the same configuration, splits and seeds; their float accuracy is compared with E1b's records.
+
+[data]
+dataset = "grabmyo"
+raw_root = "data/public/grabmyo/raw"
+participants = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+sessions = [1, 2, 3]
+gestures = [4, 11, 12, 15, 16, 17]
+trials = [1, 2, 3, 4, 5, 6, 7]
+fs_out = 2000.0
+
+[run]
+workers = 5
+threads = 4
+seeds = [0, 1, 2]
+vote_k = [1, 3, 5]
+dsp = "dc_bp20_450"
+e1b_results = "analysis/ml/e1b/e1b_g1_20261020_035336/results.json"
+e1b_splits = "analysis/ml/e1b/e1b_g1_20261020_035336/splits.json"
+reference_fold = { subject = 1, fold = "test_s3", seed = 0 }
+
+[cnn]
+layers = [[16, 8, 2], [32, 7, 2], [32, 6, 5]]
+max_epochs = 40
+patience = 8
+lr = 0.002
+weight_decay = 0.0001
+batch = 128

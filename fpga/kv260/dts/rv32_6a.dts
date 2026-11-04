@@ -1,0 +1,18 @@
+// rv32_6a.dts - device tree overlay for the stage 6A PS-variant bitstream
+// (scripts/fpga/kv260_ps_board.py load). Same structure as the overlay of the
+// k26-starter-kits app on the KV260 Ubuntu: the fpga-full region loads
+// firmware-name and pulses the four PL resets (zynqmp_reset 116..119 =
+// pl_resetn0..3) around the configuration. No device nodes: the debug window
+// 0xA000_0000 is accessed through /dev/mem by the test script only.
+//
+// Build: dtc -@ -I dts -O dtb -o rv32_6a.dtbo rv32_6a.dts
+
+/dts-v1/;
+/plugin/;
+
+&fpga_full {
+	#address-cells = <2>;
+	#size-cells = <2>;
+	firmware-name = "rv32_6a.bit.bin";
+	resets = <&zynqmp_reset 116>, <&zynqmp_reset 117>, <&zynqmp_reset 118>, <&zynqmp_reset 119>;
+};

@@ -1,0 +1,301 @@
+{
+ "generated_by": "scripts/sim/gen_e4c.py",
+ "segment_length": 600,
+ "seq0": 0,
+ "segments": [
+  {
+   "class": 0,
+   "label": "REST",
+   "gesture": 17,
+   "session": 3,
+   "participant": 1,
+   "trial": 5,
+   "start": 5500,
+   "length": 600,
+   "source": "Session3/session3_participant1/session3_participant1_gesture17_trial5.dat",
+   "decisions": [
+    {
+     "scores": [
+      371280,
+      -252127,
+      -134518,
+      -236076,
+      -418642,
+      -366182
+     ],
+     "argmax": 0,
+     "end": 399
+    },
+    {
+     "scores": [
+      390609,
+      -178568,
+      -151721,
+      -223064,
+      -417489,
+      -465805
+     ],
+     "argmax": 0,
+     "end": 499
+    },
+    {
+     "scores": [
+      356868,
+      -189790,
+      -147240,
+      -183488,
+      -418376,
+      -447445
+     ],
+     "argmax": 0,
+     "end": 599
+    }
+   ]
+  },
+  {
+   "class": 1,
+   "label": "HAND_CLOSE",
+   "gesture": 16,
+   "session": 3,
+   "participant": 1,
+   "trial": 6,
+   "start": 1900,
+   "length": 600,
+   "source": "Session3/session3_participant1/session3_participant1_gesture16_trial6.dat",
+   "decisions": [
+    {
+     "scores": [
+      -431796,
+      1378304,
+      -851967,
+      -134500,
+      -134173,
+      -1494121
+     ],
+     "argmax": 1,
+     "end": 399
+    },
+    {
+     "scores": [
+      -403043,
+      1440253,
+      -928362,
+      -126829,
+      -124142,
+      -1500413
+     ],
+     "argmax": 1,
+     "end": 499
+    },
+    {
+     "scores": [
+      -389529,
+      1530671,
+      -888412,
+      -164193,
+      -178376,
+      -1563732
+     ],
+     "argmax": 1,
+     "end": 599
+    }
+   ]
+  },
+  {
+   "class": 2,
+   "label": "HAND_OPEN",
+   "gesture": 15,
+   "session": 3,
+   "participant": 1,
+   "trial": 1,
+   "start": 1000,
+   "length": 600,
+   "source": "Session3/session3_participant1/session3_participant1_gesture15_trial1.dat",
+   "decisions": [
+    {
+     "scores": [
+      -909967,
+      -140341,
+      1328322,
+      -910849,
+      -317167,
+      -494385
+     ],
+     "argmax": 2,
+     "end": 399
+    },
+    {
+     "scores": [
+      -990668,
+      -192312,
+      1279554,
+      -834433,
+      -326515,
+      -411120
+     ],
+     "argmax": 2,
+     "end": 499
+    },
+    {
+     "scores": [
+      -1000636,
+      -442851,
+      1274597,
+      -858017,
+      -258822,
+      -167369
+     ],
+     "argmax": 2,
+     "end": 599
+    }
+   ]
+  },
+  {
+   "class": 3,
+   "label": "WRIST_FLEX",
+   "gesture": 12,
+   "session": 3,
+   "participant": 1,
+   "trial": 1,
+   "start": 3300,
+   "length": 600,
+   "source": "Session3/session3_participant1/session3_participant1_gesture12_trial1.dat",
+   "decisions": [
+    {
+     "scores": [
+      -761592,
+      -655042,
+      -830095,
+      1192441,
+      -885769,
+      -547657
+     ],
+     "argmax": 3,
+     "end": 399
+    },
+    {
+     "scores": [
+      -802683,
+      -621406,
+      -844033,
+      1221130,
+      -898297,
+      -550797
+     ],
+     "argmax": 3,
+     "end": 499
+    },
+    {
+     "scores": [
+      -853537,
+      -650469,
+      -899757,
+      1267039,
+      -903408,
+      -516100
+     ],
+     "argmax": 3,
+     "end": 599
+    }
+   ]
+  },
+  {
+   "class": 4,
+   "label": "WRIST_EXT",
+   "gesture": 11,
+   "session": 3,
+   "participant": 1,
+   "trial": 2,
+   "start": 1500,
+   "length": 600,
+   "source": "Session3/session3_participant1/session3_participant1_gesture11_trial2.dat",
+   "decisions": [
+    {
+     "scores": [
+      -808044,
+      -674985,
+      -981157,
+      -427439,
+      1382855,
+      -262206
+     ],
+     "argmax": 4,
+     "end": 399
+    },
+    {
+     "scores": [
+      -851653,
+      -668688,
+      -982391,
+      -451514,
+      1416398,
+      -278291
+     ],
+     "argmax": 4,
+     "end": 499
+    },
+    {
+     "scores": [
+      -830859,
+      -558946,
+      -909520,
+      -433983,
+      1325545,
+      -278898
+     ],
+     "argmax": 4,
+     "end": 599
+    }
+   ]
+  },
+  {
+   "class": 5,
+   "label": "PINCH",
+   "gesture": 4,
+   "session": 3,
+   "participant": 1,
+   "trial": 1,
+   "start": 0,
+   "length": 600,
+   "source": "Session3/session3_participant1/session3_participant1_gesture4_trial1.dat",
+   "decisions": [
+    {
+     "scores": [
+      -1165006,
+      -1675488,
+      -274340,
+      -274495,
+      -214268,
+      1569626
+     ],
+     "argmax": 5,
+     "end": 399
+    },
+    {
+     "scores": [
+      -1162566,
+      -1718553,
+      -342482,
+      -250658,
+      -222384,
+      1610472
+     ],
+     "argmax": 5,
+     "end": 499
+    },
+    {
+     "scores": [
+      -1264293,
+      -1783803,
+      -402244,
+      -230998,
+      -174572,
+      1666047
+     ],
+     "argmax": 5,
+     "end": 599
+    }
+   ]
+  }
+ ]
+}

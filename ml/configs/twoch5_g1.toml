@@ -1,0 +1,71 @@
+# Two-channel evaluation, 5 classes (PINCH = GRABMyo gesture 4 removed, chosen before any result): bip4 and
+# the two opposite-position pairs. Same settings as twoch_g1.toml.
+# bip2_35 was added AFTER the 6-class run (best 6-class pair; post-hoc choice, read with that in mind).
+#   python ml/scripts/run_e1b.py --config ml/configs/twoch5_g1.toml --out analysis/ml/twoch/<id>
+
+[data]
+dataset = "grabmyo"
+raw_root = "data/public/grabmyo/raw"
+participants = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+sessions = [1, 2, 3]
+gestures = [11, 12, 15, 16, 17]
+trials = [1, 2, 3, 4, 5, 6, 7]
+fs_out = 2000.0
+
+[run]
+workers = 5
+threads = 4
+seeds = { P1 = [0], P2 = [0, 1, 2] }           # NN seeds; LDA is deterministic (seed 0)
+feature_sets = ["all5", "td4", "rms"]          # LDA inner selection (as E1a)
+vote_k = [1, 3, 5]
+primary_case = "bip2_15/dc_bp20_450"
+reference_fold = { subject = 1, protocol = "P2", fold = "test_s3", seed = 0 }
+case_pairs = [["bip4/dc_bp20_450", "bip2_15/dc_bp20_450"],
+              ["bip4/dc_bp20_450", "bip2_37/dc_bp20_450"],
+              ["bip4/dc_bp20_450", "bip2_35/dc_bp20_450"]]
+
+[mlp]
+features = "all5"
+hidden = [32, 16]
+max_epochs = 200
+patience = 15
+lr = 0.001
+weight_decay = 0.0001
+batch = 256
+
+[cnn]
+layers = [[16, 8, 2], [32, 7, 2], [32, 6, 5]]   # [c_out, kernel, stride]: D = 20, RF = 40, M = 19
+max_epochs = 40
+patience = 8
+lr = 0.002
+weight_decay = 0.0001
+batch = 128
+
+
+[[cases]]
+name = "bip4/dc_bp20_450"
+channels = "bip4"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]
+
+[[cases]]
+name = "bip2_15/dc_bp20_450"
+channels = "bip2_15"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]
+
+[[cases]]
+name = "bip2_37/dc_bp20_450"
+channels = "bip2_37"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]
+
+[[cases]]
+name = "bip2_35/dc_bp20_450"
+channels = "bip2_35"
+dsp = "dc_bp20_450"
+models = ["lda", "mlp", "cnn"]
+protocols = ["P1", "P2"]

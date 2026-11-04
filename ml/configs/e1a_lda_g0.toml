@@ -1,0 +1,85 @@
+# E1a: time-domain features + LDA on GRABMyo G0 (python ml/scripts/run_lda.py)
+# G0 = 3 participants x 3 sessions x 6 classes x 7 trials = 378 recordings.
+# It is meant to validate the data and experiment pipeline, not to support
+# generalisation claims (3 subjects).
+
+[data]
+dataset = "grabmyo"
+raw_root = "data/public/grabmyo/raw"
+participants = [1, 2, 3]
+sessions = [1, 2, 3]
+gestures = [4, 11, 12, 15, 16, 17]    # -> unified PINCH, WRIST_EXT, WRIST_FLEX, HAND_OPEN, HAND_CLOSE, REST
+trials = [1, 2, 3, 4, 5, 6, 7]
+fs_out = 2000.0                        # 2048 -> 2000 Hz (125/128), PC-side input adaptation
+
+[run]
+seed = 0                               # LDA (lsqr + Ledoit-Wolf) is deterministic; recorded anyway
+feature_sets = ["all5", "td4", "rms"]  # candidates, chosen per fold on inner folds (training records only)
+vote_k = [1, 3, 5]                     # causal majority vote over the last k window decisions
+primary_case = "bip4/dc_bp20_450"
+
+[[run.cases]]
+name = "bip4/dc_bp20_450"
+channels = "bip4"
+dsp = "dc_bp20_450"
+
+[[run.cases]]
+name = "bip4/none"
+channels = "bip4"
+dsp = "none"
+
+[[run.cases]]
+name = "bip4/dc"
+channels = "bip4"
+dsp = "dc"
+
+[[run.cases]]
+name = "bip4/dc_notch60_bp20_450"
+channels = "bip4"
+dsp = "dc_notch60_bp20_450"
+
+[[run.cases]]
+name = "bip4/dc_bp10_450"
+channels = "bip4"
+dsp = "dc_bp10_450"
+
+[[run.cases]]
+name = "bip4/dc_bp40_450"
+channels = "bip4"
+dsp = "dc_bp40_450"
+
+[[run.cases]]
+name = "bip4/dc_fir20_450"
+channels = "bip4"
+dsp = "dc_fir20_450"
+
+[[run.cases]]
+name = "bip4/dc_bp20_450_thr"
+channels = "bip4"
+dsp = "dc_bp20_450_thr"
+
+[[run.cases]]
+name = "bip4/dc_bp20_450_indep"
+channels = "bip4"
+dsp = "dc_bp20_450_indep"
+
+[[run.cases]]
+name = "bip4/dc_bp20_450/trim0.5"
+channels = "bip4"
+dsp = "dc_bp20_450"
+trim_start_s = 0.5
+
+[[run.cases]]
+name = "mono4/dc_bp20_450"
+channels = "mono4"
+dsp = "dc_bp20_450"
+
+[[run.cases]]
+name = "mono4/none"
+channels = "mono4"
+dsp = "none"
+
+[[run.cases]]
+name = "bip8/dc_bp20_450"
+channels = "bip8"
+dsp = "dc_bp20_450"

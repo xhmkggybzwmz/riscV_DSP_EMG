@@ -1,0 +1,9 @@
+{
+ "_comment": "ESI input contract of the deployed E2 reference fold (build/e4c/fw/mg6_data.json, checked by tests/test_dataset.py when present). No samples here.",
+ "model": "E2 reference fold: subject 1, P2, test session 3, seed 0",
+ "esi_lsb_mV": 3.437282229959355e-05,
+ "esi_rule": "P99.99(|x|) of training raw samples -> code 16384",
+ "channels": [["F1", "F9"], ["F3", "F11"], ["F5", "F13"], ["F7", "F15"]],
+ "fs_out": 2000.0,
+ "mg6_frames_le_sha256": "e9224ebf562efaf2259ef7c08e68547414f5823c9749a0ff5af9696abfdf5059"
+}

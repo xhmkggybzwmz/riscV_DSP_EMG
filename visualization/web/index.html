@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMG Gesture View</title>
+<style>
+  :root { --bg: #0b0e12; --panel: #161b22; --text: #e6edf3; --muted: #8b949e; --ok: #3fb950; --warn: #f0b429;
+          --bad: #f85149; --accent: #58a6ff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.4 system-ui, sans-serif; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 420px; height: 100vh; }
+  #stage { position: relative; min-height: 360px; }
+  #view { width: 100%; height: 100%; display: block; cursor: grab; }
+  #stale { display: none; position: absolute; top: 14px; left: 50%; transform: translateX(-50%); padding: 6px 14px;
+           background: rgba(240, 180, 41, .15); border: 1px solid var(--warn); color: var(--warn); border-radius: 6px;
+           font-weight: 600; }
+  #fatal { display: none; position: absolute; inset: 40% 10% auto; padding: 12px; background: #3d1010; color: #ffb4b0; }
+  aside { background: var(--panel); padding: 16px 18px; overflow-y: auto; border-left: 1px solid #30363d; }
+  h1 { font-size: 15px; margin: 0 0 10px; color: var(--muted); font-weight: 600; }
+  .badge { display: block; padding: 7px 10px; border-radius: 6px; font-weight: 700; margin-bottom: 12px; }
+  .badge-hw { background: rgba(63, 185, 80, .18); color: var(--ok); border: 1px solid var(--ok); }
+  .badge-sim { background: rgba(240, 180, 41, .2); color: var(--warn); border: 2px dashed var(--warn); }
+  .badge-fix { background: rgba(88, 166, 255, .15); color: var(--accent); border: 1px solid var(--accent); }
+  .badge-none { background: #21262d; color: var(--muted); }
+  #gesture { font-size: 34px; font-weight: 800; letter-spacing: .5px; margin: 4px 0 2px; }
+  .sub { color: var(--muted); font-size: 12px; margin-bottom: 12px; }
+  dl { display: grid; grid-template-columns: 128px 1fr; gap: 4px 8px; margin: 0 0 14px; }
+  dt { color: var(--muted); } dd { margin: 0; font-variant-numeric: tabular-nums; word-break: break-word; }
+  .ok { color: var(--ok); } .warn { color: var(--warn); }
+  .bar { display: grid; grid-template-columns: 96px 1fr 80px; gap: 6px; align-items: center; margin: 3px 0; font-size: 12px; }
+  .bt { background: #0d1117; height: 12px; border-radius: 3px; overflow: hidden; }
+  .bf { display: block; height: 100%; background: #6e7681; }
+  .bar.best .bf { background: var(--accent); } .bar.best .bl { color: var(--accent); font-weight: 700; }
+  .bv { text-align: right; font-variant-numeric: tabular-nums; }
+  @media (max-width: 860px) { main { grid-template-columns: 1fr; grid-template-rows: 55vh auto; height: auto; } }
+</style>
+</head>
+<body>
+<main>
+  <section id="stage">
+    <canvas id="view"></canvas>
+    <div id="stale"></div>
+    <div id="fatal"></div>
+  </section>
+  <aside>
+    <h1>KV260 EMG gesture recognition &mdash; 3D view (E4b-A)</h1>
+    <span id="source" class="badge badge-none">no source yet</span>
+    <div id="gesture">WAITING</div>
+    <div id="levelrow" style="display:none;margin:8px 0">
+      <div style="height:14px;background:#2a3038;border-radius:7px;overflow:hidden"><div id="levelfill" style="height:100%;width:0;background:#4fc3f7;transition:width 60ms linear"></div></div>
+      <div id="leveltext" class="sub">-</div>
+    </div>
+    <div class="sub">pose shown: <span id="pose">REST</span> (preset per class, smoothed; not a joint-angle reconstruction)</div>
+    <dl>
+      <dt>connection</dt><dd id="conn">-</dd>
+      <dt>server</dt><dd id="url">-</dd>
+      <dt>result index</dt><dd id="index">-</dd>
+      <dt>server seq</dt><dd id="serverseq">-</dd>
+      <dt>window end / ts</dt><dd id="window">-</dd>
+      <dt>argmax</dt><dd id="argmax">-</dd>
+      <dt>CNN latency</dt><dd id="lat">-</dd>
+      <dt>last result</dt><dd id="age">-</dd>
+      <dt>rate</dt><dd id="rate">-</dd>
+      <dt>losses</dt><dd id="drops">-</dd>
+      <dt>other</dt><dd id="other">-</dd>
+    </dl>
+    <h1>class scores (int32, E2/E3 order)</h1>
+    <div id="scores"></div>
+  </aside>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

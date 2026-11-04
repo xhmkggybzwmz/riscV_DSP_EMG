@@ -1,0 +1,34 @@
+# DSP-R0 variant "none": no additional digital filtering (dataset as published)
+# fs/n_ch are overwritten by the experiment runner from the loaded recordings.
+fs = 2000.0
+n_ch = 4
+gap_policy = "reset"
+stage_order = ["dc", "notch", "bandpass"]
+
+[dc]
+enabled = false
+fc_hz = 5.0
+
+[notch]
+enabled = false
+f0_hz = 60.0
+q = 30.0
+
+[bandpass]
+enabled = false
+kind = "iir_butter"
+low_hz = 20.0
+high_hz = 450.0
+order = 2
+numtaps = 101
+window = "hamming"
+
+[features]
+window_samples = 400
+step_samples = 100
+settle_samples = 200
+boundary = "continuous"
+features = ["MAV", "RMS", "WL", "ZC", "SSC"]
+zc_threshold = 0.0
+ssc_threshold = 0.0
+

@@ -1,0 +1,703 @@
+{
+ "vector_version": "e2-vectors-0.2",
+ "reference_version": "emg_fixed-e2-0.1",
+ "model": {
+  "fold": "test_s3",
+  "subject": 1,
+  "seed": 0,
+  "float_model_sha256": "0c4a7c49958b5ebaba2c7622b645b23a12a91be73304c5f84957d91b7fe1f10c",
+  "int8_arrays_sha256": "002cae6faaab96270963fb4737cefbf078201508c8bd2859e2dd7fdcedc2f87b",
+  "splits_sha256": "ae3974ed5ba3bf401d40f6a16cb8bf0849ce26ef56b11c53ff8cacddd60aaaf6",
+  "describe": {
+   "layers": [
+    {
+     "op": "conv1d",
+     "wq_shape": [
+      16,
+      4,
+      8
+     ],
+     "stride": 2,
+     "kernel": 8,
+     "input": "int16 POST_DSP",
+     "s_in": 3.437282229959355e-05,
+     "s_out": 0.03840127300906292,
+     "s_w_min": null,
+     "s_w_max": null,
+     "M_range": [
+      34979,
+      61178
+     ],
+     "s_range": [
+      27,
+      29
+     ],
+     "bias_range": [
+      -30883,
+      28594
+     ]
+    },
+    {
+     "op": "conv1d",
+     "wq_shape": [
+      32,
+      16,
+      7
+     ],
+     "stride": 2,
+     "kernel": 7,
+     "input": "uint8 activation",
+     "s_in": 0.03840127300906292,
+     "s_out": 0.02228546007660369,
+     "s_w_min": null,
+     "s_w_max": null,
+     "M_range": [
+      32880,
+      64969
+     ],
+     "s_range": [
+      23,
+      24
+     ],
+     "bias_range": [
+      -8734,
+      14167
+     ]
+    },
+    {
+     "op": "conv1d",
+     "wq_shape": [
+      32,
+      32,
+      6
+     ],
+     "stride": 5,
+     "kernel": 6,
+     "input": "uint8 activation",
+     "s_in": 0.02228546007660369,
+     "s_out": 0.02645143884281644,
+     "s_w_min": null,
+     "s_w_max": null,
+     "M_range": [
+      33217,
+      64526
+     ],
+     "s_range": [
+      23,
+      24
+     ],
+     "bias_range": [
+      -37550,
+      42214
+     ]
+    }
+   ],
+   "fc": {
+    "wq_shape": [
+     6,
+     32
+    ],
+    "s_fc": 6.014341594189671e-06,
+    "bias_range": [
+     -25141,
+     23153
+    ]
+   },
+   "M_gap": 19,
+   "D": 20,
+   "RF": 40,
+   "window": 400,
+   "step": 100,
+   "settle": 0,
+   "first_decision_end": 399
+  },
+  "files": {
+   "conv1_w": {
+    "file": "conv1_w.hex",
+    "words": 512,
+    "width_bits": 8,
+    "sha256": "a22e687de58a545272a7af62235819488c1078289b7eb127ab5d674a540c23e4"
+   },
+   "conv1_b": {
+    "file": "conv1_b.hex",
+    "words": 16,
+    "width_bits": 32,
+    "sha256": "cffdffba75608982a63e03faaa7f3d79f3e52c7268fb04ddf665748ef95e40c5"
+   },
+   "conv1_M": {
+    "file": "conv1_M.hex",
+    "words": 16,
+    "width_bits": 16,
+    "sha256": "5c5bebf5c3a72126f89a13150ffa9d15fd373fa21e92524050357f3306c596e0"
+   },
+   "conv1_s": {
+    "file": "conv1_s.hex",
+    "words": 16,
+    "width_bits": 8,
+    "sha256": "5ea0e3c835cedb88366e7d30754e40c2241d4e84add406abeb234c717f434ec5"
+   },
+   "conv2_w": {
+    "file": "conv2_w.hex",
+    "words": 3584,
+    "width_bits": 8,
+    "sha256": "9e729b1e13bc65792e845089c7e55df419034e50df770a23aceb8a97ab9e2e25"
+   },
+   "conv2_b": {
+    "file": "conv2_b.hex",
+    "words": 32,
+    "width_bits": 32,
+    "sha256": "ad22dd548b10feaff8254f585edd8b6bbb6b9d69c31781cc7957868bdd3be11e"
+   },
+   "conv2_M": {
+    "file": "conv2_M.hex",
+    "words": 32,
+    "width_bits": 16,
+    "sha256": "2bef949d9bcbdc944ccdd1551d182e1aabe6ca6cdcc83863dade74ce7e36c2ef"
+   },
+   "conv2_s": {
+    "file": "conv2_s.hex",
+    "words": 32,
+    "width_bits": 8,
+    "sha256": "76d7fcec2a075460b39308193107bebc7529424b49871f8fa6e3a3e9883404bf"
+   },
+   "conv3_w": {
+    "file": "conv3_w.hex",
+    "words": 6144,
+    "width_bits": 8,
+    "sha256": "4599e317442a57936f2d3c4d0745d0ceb12e67287a262a1420d2392fb210ed1d"
+   },
+   "conv3_b": {
+    "file": "conv3_b.hex",
+    "words": 32,
+    "width_bits": 32,
+    "sha256": "27afdfa4b130ed2d2f47318d72551fa38749bbbe8598f3faeb169489da98acac"
+   },
+   "conv3_M": {
+    "file": "conv3_M.hex",
+    "words": 32,
+    "width_bits": 16,
+    "sha256": "a65a7396400b26cd87e9fcbe5aa6ffa7521965ccf38ce8388ab8da469ae92f81"
+   },
+   "conv3_s": {
+    "file": "conv3_s.hex",
+    "words": 32,
+    "width_bits": 8,
+    "sha256": "55b18a3cf8e431bb80091b6d9bcdf9add0065b221dffa429145253a3104d11fb"
+   },
+   "fc_w": {
+    "file": "fc_w.hex",
+    "words": 192,
+    "width_bits": 8,
+    "sha256": "cce7fb23c913a12cf4979f81ee21ca614b2a74423c9131cfd0ee3213d7c79e42"
+   },
+   "fc_b": {
+    "file": "fc_b.hex",
+    "words": 6,
+    "width_bits": 32,
+    "sha256": "05fccdc6a53f7206f910319e9d8477ebfecab34d8814bdc1043439213ef78678"
+   },
+   "dsp_coef": {
+    "file": "dsp_coef.hex",
+    "words": 15,
+    "width_bits": 18,
+    "sha256": "e299b90e47b2684caa6b686065c085482f1291ee93cf9d4d771d64f9b9e2bb8e"
+   }
+  }
+ },
+ "esi_calibration": {
+  "source": "GRABMyo-1.1.0 replay (bip4)",
+  "stage": "PRE_DSP",
+  "units": "mV",
+  "lsb": 3.437282229959355e-05,
+  "n_ch": 4,
+  "lane_names": [
+   "F1-F9",
+   "F3-F11",
+   "F5-F13",
+   "F7-F15"
+  ],
+  "offset": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "rule": "P99.99(|x|) of training raw samples -> code 16384",
+  "calibration_records": "84 training records (see the run's int8.json)"
+ },
+ "dsp": {
+  "D_BITS": 27,
+  "D_FRAC": 8,
+  "C_BITS": 18,
+  "C_FRAC": 16,
+  "ACC_BITS": 48,
+  "Y_BITS": 16,
+  "rounding": "round half up: (x + 2^(s-1)) >> s, arithmetic shift",
+  "sections": [
+   {
+    "name": "dc0",
+    "b_int": [
+     65025,
+     -65025,
+     0
+    ],
+    "a_int": [
+     -64515,
+     0
+    ],
+    "real": [
+     0.9922073816758569,
+     -0.9922073816758569,
+     0.0,
+     1.0,
+     -0.9844147633517137,
+     0.0
+    ],
+    "b_quantised": [
+     0.9922027587890625,
+     -0.9922027587890625,
+     0.0
+    ],
+    "a_quantised": [
+     -0.9844207763671875,
+     0.0
+    ]
+   },
+   {
+    "name": "bp0",
+    "b_int": [
+     15159,
+     30318,
+     15159
+    ],
+    "a_int": [
+     -14987,
+     13128
+    ],
+    "real": [
+     0.23130797944426512,
+     0.46261595888853024,
+     0.23130797944426512,
+     1.0,
+     -0.2286884193544206,
+     0.20031197735137138
+    ],
+    "b_quantised": [
+     0.2313079833984375,
+     0.462615966796875,
+     0.2313079833984375
+    ],
+    "a_quantised": [
+     -0.2286834716796875,
+     0.2003173828125
+    ]
+   },
+   {
+    "name": "bp1",
+    "b_int": [
+     65536,
+     -131072,
+     65536
+    ],
+    "a_int": [
+     -125266,
+     59996
+    ],
+    "real": [
+     1.0,
+     -2.0,
+     1.0,
+     1.0,
+     -1.9114061789087697,
+     0.9154609006707842
+    ],
+    "b_quantised": [
+     1.0,
+     -2.0,
+     1.0
+    ],
+    "a_quantised": [
+     -1.911407470703125,
+     0.91546630859375
+    ]
+   }
+  ]
+ },
+ "postproc": {
+  "K": 1,
+  "T": 0,
+  "rules": "reference/emg_fixed/postproc.py (E3 default K = 1, T = 0)"
+ },
+ "decision_schedule": {
+  "settle": 0,
+  "first_decision_sample_index": 399,
+  "every": 100,
+  "note": "E2's recorded accuracy used settle = 200; weights are unchanged"
+ },
+ "formats": {
+  "input_frames.hex": "176-bit: lane0..7 int16 [127:0] (lane0 in bits 15:0), flags uint16 [143:128], seq uint32 [175:144]",
+  "dsp_out.hex": "128-bit: lane0..7 int16 POST_DSP (lanes 4..7 = 0), one word per frame in segment order",
+  "convN_act.hex": "8*C bits uint8 activations (channel 0 in bits 7:0), then j [24], then segment [8]",
+  "convN_acc.hex": "32*C bits int32 accumulators (before requant), then j [24], then segment [8]",
+  "gap_sum.hex": "32 x 16-bit GAP sums (13 bits used), then window end sample index [24], then segment [8]",
+  "logits.hex": "6 x int32 logits (class 0 in bits 31:0), then window end [24], then segment [8]",
+  "decisions.hex": "72-bit: argmax [3:0], post-processed output [7:4] (two's complement 4-bit: -2 = NO_DECISION, -1 = UNCERTAIN), margin uint32 [39:8], window end [63:40], segment [71:64]",
+  "model/convN_w.hex": "int8 per line, index (o*C_in + c)*K + k",
+  "model/convN_b.hex": "int32 per line",
+  "model/convN_M.hex": "uint16 per line (per output channel)",
+  "model/convN_s.hex": "uint8 shift per line",
+  "model/fc_w.hex": "int8 per line, index k*32 + c",
+  "model/fc_b.hex": "int32 per line",
+  "model/dsp_coef.hex": "int18 per line: for each section b0 b1 b2 a1 a2 (Q2.16)"
+ },
+ "scenarios": [
+  {
+   "name": "s1_normal",
+   "stage": "PRE_DSP",
+   "description": "1400 samples of session3/participant1 HAND_CLOSE trial 1 (P2 test day), SOS at frame 0; with accumulators of every layer",
+   "frames": 1400,
+   "segments": [
+    {
+     "start": 0,
+     "end": 1400,
+     "starts_with_gap": false
+    }
+   ],
+   "decisions": 11,
+   "files": {
+    "input_frames": {
+     "file": "input_frames.hex",
+     "words": 1400,
+     "width_bits": 176,
+     "sha256": "eef573a65506afd24026b3ee216deaebf500eb7ef54713eedd4b818f8c117e75"
+    },
+    "dsp_out": {
+     "file": "dsp_out.hex",
+     "words": 1400,
+     "width_bits": 128,
+     "sha256": "6ca05f499b2491b54e98cbcc03e3c6a5639ee8aa0ccdbf083b8c34bb4ad8026d"
+    },
+    "conv1_act": {
+     "file": "conv1_act.hex",
+     "words": 697,
+     "width_bits": 160,
+     "sha256": "91ef8f8eeb833fcf902d44f9bcdfa2916343702d3d79e4b6855236e53a6fa6fe"
+    },
+    "conv1_acc": {
+     "file": "conv1_acc.hex",
+     "words": 697,
+     "width_bits": 544,
+     "sha256": "45358c1f1fe14cedfb46b4ea3661d313534fefac027c50629d53e8121a9446a3"
+    },
+    "conv2_act": {
+     "file": "conv2_act.hex",
+     "words": 346,
+     "width_bits": 288,
+     "sha256": "cea0a9cdbe07eaed413e3a82ca6fe3056d9fa4108808be371c19d31817c61cea"
+    },
+    "conv2_acc": {
+     "file": "conv2_acc.hex",
+     "words": 346,
+     "width_bits": 1056,
+     "sha256": "47383d90c0a6e9e129515a069a29b65ed287394c936e4779ae5d659c9efb8e0c"
+    },
+    "conv3_act": {
+     "file": "conv3_act.hex",
+     "words": 69,
+     "width_bits": 288,
+     "sha256": "f9b95704b60268ec7e668dca62365d058f217c8a6e5783b12f60b5c87b631f68"
+    },
+    "conv3_acc": {
+     "file": "conv3_acc.hex",
+     "words": 69,
+     "width_bits": 1056,
+     "sha256": "ed5c81b3c39bd4dd13dca76718de0a81d9e5fac78771491fb76242446d3d51c3"
+    },
+    "gap_sum": {
+     "file": "gap_sum.hex",
+     "words": 11,
+     "width_bits": 544,
+     "sha256": "559f0668461a6fb8d5f3658eb0800673fa1ab75899b7df52d67bbd43781b4d42"
+    },
+    "logits": {
+     "file": "logits.hex",
+     "words": 11,
+     "width_bits": 224,
+     "sha256": "feef53b9ef53d3e67e787b91de88ce29ad462303afd2bca65dec72c9b372d1ae"
+    },
+    "decisions": {
+     "file": "decisions.hex",
+     "words": 11,
+     "width_bits": 72,
+     "sha256": "55b37926f97f61947adac96fbeb2b45673d5373ae685decfdcd240a40a437ee5"
+    }
+   }
+  },
+  {
+   "name": "s2_sos_restart",
+   "stage": "PRE_DSP",
+   "description": "800 REST samples, then SOS and 900 HAND_CLOSE samples (two streams)",
+   "frames": 1700,
+   "segments": [
+    {
+     "start": 0,
+     "end": 800,
+     "starts_with_gap": false
+    },
+    {
+     "start": 800,
+     "end": 1700,
+     "starts_with_gap": false
+    }
+   ],
+   "decisions": 11,
+   "files": {
+    "input_frames": {
+     "file": "input_frames.hex",
+     "words": 1700,
+     "width_bits": 176,
+     "sha256": "77690b40ecce3ccdbf0063243e86a2c2863b190a47cfd07a2eb79a1737b31fb9"
+    },
+    "dsp_out": {
+     "file": "dsp_out.hex",
+     "words": 1700,
+     "width_bits": 128,
+     "sha256": "9dadcd6a0cdde5b6cedf72fd4635d7434953ce79cb5983aadf31a9c8b1a5166a"
+    },
+    "conv1_act": {
+     "file": "conv1_act.hex",
+     "words": 844,
+     "width_bits": 160,
+     "sha256": "4f73e3e832b33e0c3d48ed8c0bfad9264547e61d49b714e2b52d1c5583c5b11a"
+    },
+    "conv2_act": {
+     "file": "conv2_act.hex",
+     "words": 417,
+     "width_bits": 288,
+     "sha256": "a20fbc22dbe4544402ed77305f75b48e14ac300eda112effafffda46e93a346c"
+    },
+    "conv3_act": {
+     "file": "conv3_act.hex",
+     "words": 83,
+     "width_bits": 288,
+     "sha256": "d530f7195a35df9dffb7debb033774a4c7e5afb7b4dd1fee5119db8e10235b60"
+    },
+    "gap_sum": {
+     "file": "gap_sum.hex",
+     "words": 11,
+     "width_bits": 544,
+     "sha256": "c41753359fa388c5f64358d1886a30bb5927d2fc0894f4439bbaef25ff12e51a"
+    },
+    "logits": {
+     "file": "logits.hex",
+     "words": 11,
+     "width_bits": 224,
+     "sha256": "e2a327ba2ae3e2227aa50c7a0bdd815dc2ca12466c78c8819aad48395d18317e"
+    },
+    "decisions": {
+     "file": "decisions.hex",
+     "words": 11,
+     "width_bits": 72,
+     "sha256": "c27eb9f1121ca1e272b981c59dfab9e88b05d023eec4a8cbbdefbde55956035b"
+    }
+   }
+  },
+  {
+   "name": "s3_gap",
+   "stage": "PRE_DSP",
+   "description": "WRIST_EXT trial 2: frames 0-899, 37 frames dropped (seq +37, GAP flag), then 800 frames; seq starts at 0xFFFFFE00 and wraps",
+   "frames": 1700,
+   "segments": [
+    {
+     "start": 0,
+     "end": 900,
+     "starts_with_gap": false
+    },
+    {
+     "start": 900,
+     "end": 1700,
+     "starts_with_gap": true
+    }
+   ],
+   "decisions": 11,
+   "files": {
+    "input_frames": {
+     "file": "input_frames.hex",
+     "words": 1700,
+     "width_bits": 176,
+     "sha256": "cebf9d85a4971e5c54fe2406b744375cb2f92bee9f5ca68196875088ac9a51e9"
+    },
+    "dsp_out": {
+     "file": "dsp_out.hex",
+     "words": 1700,
+     "width_bits": 128,
+     "sha256": "bccb92bc163b123cf29c77ba396d124058003e6201c1f2cc2e7676d7d157608a"
+    },
+    "conv1_act": {
+     "file": "conv1_act.hex",
+     "words": 844,
+     "width_bits": 160,
+     "sha256": "914d8c028be5b451b63c09f9a243860780de05a571ced3603d7138abcd795d52"
+    },
+    "conv2_act": {
+     "file": "conv2_act.hex",
+     "words": 417,
+     "width_bits": 288,
+     "sha256": "92dfbefff02f66276a83ce2effe2de54ec1817b0b8fdfdf3b79a0c22a6259193"
+    },
+    "conv3_act": {
+     "file": "conv3_act.hex",
+     "words": 83,
+     "width_bits": 288,
+     "sha256": "978e7af347fce434990ef1a7994ed1f6049e9932aceb6ab6658d027145368db1"
+    },
+    "gap_sum": {
+     "file": "gap_sum.hex",
+     "words": 11,
+     "width_bits": 544,
+     "sha256": "c0dd3b35f66ec7a16435756044e9dafdc9df96c4cc0953ca647a73ff6aa0d1c4"
+    },
+    "logits": {
+     "file": "logits.hex",
+     "words": 11,
+     "width_bits": 224,
+     "sha256": "6f838f52acd8ed533a28b6d25a2b4b558ad244140e5eb29eb4213fafc2471cf3"
+    },
+    "decisions": {
+     "file": "decisions.hex",
+     "words": 11,
+     "width_bits": 72,
+     "sha256": "a6f14007267d3857ba3c9200bc142ebb09edd681043d1cd975cca3e22d396dd2"
+    }
+   }
+  },
+  {
+   "name": "s4_saturation",
+   "stage": "PRE_DSP",
+   "description": "full-scale square waves, clipped noise and a +32767 constant: DSP output saturation and uint8 activation clipping",
+   "frames": 1000,
+   "segments": [
+    {
+     "start": 0,
+     "end": 1000,
+     "starts_with_gap": false
+    }
+   ],
+   "decisions": 7,
+   "files": {
+    "input_frames": {
+     "file": "input_frames.hex",
+     "words": 1000,
+     "width_bits": 176,
+     "sha256": "117daa87362aaaa57d30cf32db05872e248ac5c16c567146e31e2474d228f75c"
+    },
+    "dsp_out": {
+     "file": "dsp_out.hex",
+     "words": 1000,
+     "width_bits": 128,
+     "sha256": "1859c41cc9a1ab7de09421060f711597745290f44ecda2acf435bee1ee4da8a8"
+    },
+    "conv1_act": {
+     "file": "conv1_act.hex",
+     "words": 497,
+     "width_bits": 160,
+     "sha256": "950ad950c5e26a6465729382757efbeab55bbd31efac94a21aef798a89d0d534"
+    },
+    "conv2_act": {
+     "file": "conv2_act.hex",
+     "words": 246,
+     "width_bits": 288,
+     "sha256": "39b41402619600a401c108065f3fa99f27e937cb3263ede7874a55e0dd917e6c"
+    },
+    "conv3_act": {
+     "file": "conv3_act.hex",
+     "words": 49,
+     "width_bits": 288,
+     "sha256": "bdd527045fff0bfec00b86c5b3713ef6d8450da101bcb2e15f1870150b3c3b7f"
+    },
+    "gap_sum": {
+     "file": "gap_sum.hex",
+     "words": 7,
+     "width_bits": 544,
+     "sha256": "15926c048db6a797da6285918a215fa74afae3217fa9925db05a99ec84329793"
+    },
+    "logits": {
+     "file": "logits.hex",
+     "words": 7,
+     "width_bits": 224,
+     "sha256": "e8bf299b6b3249f40d4aa7155793c246c8cf2ade15007f49eb0d870aff6b7875"
+    },
+    "decisions": {
+     "file": "decisions.hex",
+     "words": 7,
+     "width_bits": 72,
+     "sha256": "94f6cfd134d42ad422378a7675c00bea000b73c2891a37f7fd7dec653fcf13de"
+    }
+   }
+  },
+  {
+   "name": "s5_post_dsp",
+   "stage": "POST_DSP",
+   "description": "inference-core-only input: the fixed DSP output of s1_normal (flag bit 6 POST_DSP = 0x40); must reproduce s1 CNN outputs; must NOT be filtered again",
+   "frames": 1400,
+   "segments": [
+    {
+     "start": 0,
+     "end": 1400,
+     "starts_with_gap": false
+    }
+   ],
+   "decisions": 11,
+   "files": {
+    "input_frames": {
+     "file": "input_frames.hex",
+     "words": 1400,
+     "width_bits": 176,
+     "sha256": "945479535747e730ed212c554de4a5a88258419267ab3992766ca001b083e5cb"
+    },
+    "dsp_out": {
+     "file": "dsp_out.hex",
+     "words": 1400,
+     "width_bits": 128,
+     "sha256": "6ca05f499b2491b54e98cbcc03e3c6a5639ee8aa0ccdbf083b8c34bb4ad8026d"
+    },
+    "conv1_act": {
+     "file": "conv1_act.hex",
+     "words": 697,
+     "width_bits": 160,
+     "sha256": "91ef8f8eeb833fcf902d44f9bcdfa2916343702d3d79e4b6855236e53a6fa6fe"
+    },
+    "conv2_act": {
+     "file": "conv2_act.hex",
+     "words": 346,
+     "width_bits": 288,
+     "sha256": "cea0a9cdbe07eaed413e3a82ca6fe3056d9fa4108808be371c19d31817c61cea"
+    },
+    "conv3_act": {
+     "file": "conv3_act.hex",
+     "words": 69,
+     "width_bits": 288,
+     "sha256": "f9b95704b60268ec7e668dca62365d058f217c8a6e5783b12f60b5c87b631f68"
+    },
+    "gap_sum": {
+     "file": "gap_sum.hex",
+     "words": 11,
+     "width_bits": 544,
+     "sha256": "559f0668461a6fb8d5f3658eb0800673fa1ab75899b7df52d67bbd43781b4d42"
+    },
+    "logits": {
+     "file": "logits.hex",
+     "words": 11,
+     "width_bits": 224,
+     "sha256": "feef53b9ef53d3e67e787b91de88ce29ad462303afd2bca65dec72c9b372d1ae"
+    },
+    "decisions": {
+     "file": "decisions.hex",
+     "words": 11,
+     "width_bits": 72,
+     "sha256": "55b37926f97f61947adac96fbeb2b45673d5373ae685decfdcd240a40a437ee5"
+    }
+   }
+  }
+ ]
+}
